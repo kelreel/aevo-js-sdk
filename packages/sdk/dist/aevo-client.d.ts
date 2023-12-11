@@ -1,6 +1,7 @@
 import { AevoChainType, AevoConfig } from "./config";
 import { Web3BaseWalletAccount } from "web3";
 import WebSocket from "ws";
+import { AevoRestApi } from "./rest-api/rest-api";
 interface Params {
     signingKey?: string;
     walletAddress?: string;
@@ -26,5 +27,6 @@ export declare class AevoClient {
     closeConnection: () => Promise<void>;
     readMessages: (listener: (data: any) => void) => void;
     subscribeTicker: (asset: string) => Promise<void>;
+    getRestApiClient: () => AevoRestApi;
 }
 export {};

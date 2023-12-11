@@ -2,6 +2,7 @@ import { AevoChainType, getAevoConfig } from "./config";
 import { Web3 } from "web3";
 import WebSocket from "ws";
 import { sleep } from "./utils";
+import { AevoRestApi } from "./rest-api/rest-api";
 const web3 = new Web3("http://127.0.0.1:9999");
 export class AevoClient {
     constructor(params) {
@@ -70,6 +71,9 @@ export class AevoClient {
                 console.log(`[Aevo-SDK]: WS subscribing to ticker ${asset}`);
             }
             await this.ws?.send(JSON.stringify({ op: "subscribe", data: [asset] }));
+        };
+        this.getRestApiClient = () => {
+            return new AevoRestApi(this);
         };
         this.signingKey = params?.signingKey;
         this.walletAddress = params?.walletAddress;

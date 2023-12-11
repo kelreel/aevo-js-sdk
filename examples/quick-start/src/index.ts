@@ -7,7 +7,8 @@ import { AevoClient } from "aevo-js-sdk";
 // const account = web3.eth.accounts.wallet.add(privateKeyString).get(0)
 // console.log(account)
 
-const main = async () => {
+// Subscribe ETH ticker WS
+const wsData = async () => {
   const client = new AevoClient({});
   try {
     await client.openConnection();
@@ -22,4 +23,17 @@ const main = async () => {
   }
 };
 
-main();
+// Get markets arr
+const getMarkets = async () => {
+  const restClient = new AevoClient().getRestApiClient();
+
+  const data = await restClient.getMarkets({
+    asset: "ETH",
+    instrument_type: "OPTION",
+  });
+
+  console.log(data);
+};
+
+// wsData();
+// getMarkets();
