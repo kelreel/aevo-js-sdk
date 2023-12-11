@@ -1,0 +1,19 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "start": "tsx watch src/index.ts"
+  },
+  "keywords": [],
+  "dependencies": {
+    "aevo-js-sdk": "*",
+    "web3": "^4.3.0"
+  },
+  "devDependencies": {
+    "tsx": "4.6.2"
+  },
+  "author": "",
+  "license": "ISC"
+}

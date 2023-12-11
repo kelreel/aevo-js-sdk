@@ -1,0 +1,26 @@
+{
+  "name": "aevo-js-sdk",
+  "private": true,
+  "description": "Aevo.xyz Unofficial SDK",
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Aevo",
+    "Aevo.xyz"
+  ],
+  "author": "kelreel",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kelreel/aevo-js-sdk"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "typescript": "^5.3.3"
+  }
+}
