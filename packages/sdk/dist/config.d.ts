@@ -5,8 +5,8 @@ export declare enum AevoChainType {
 export interface AevoConfig {
     rest_url: string;
     ws_url: string;
-    chain: {
-        type: AevoChainType;
+    type: AevoChainType;
+    signing_domain: {
         name: string;
         version: string;
         chainId: string;

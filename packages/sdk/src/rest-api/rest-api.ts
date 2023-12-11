@@ -17,6 +17,8 @@ export class AevoRestApi {
     this.client = client;
   }
 
+  // Public REST API
+
   /**
    * Returns the list of active underlying assets.
    */

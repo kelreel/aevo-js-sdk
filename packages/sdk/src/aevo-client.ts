@@ -2,7 +2,8 @@ import { AevoChainType, AevoConfig, getAevoConfig } from "./config";
 import { Web3, Web3BaseWalletAccount } from "web3";
 import WebSocket from "ws";
 import { sleep } from "./utils";
-import { AevoRestApi } from "./rest-api/rest-api";
+import { AevoRestApi } from "./rest-api";
+import { AevoOrderClient } from "./order";
 
 interface Params {
   signingKey?: string;
@@ -10,7 +11,6 @@ interface Params {
   apiKey?: string;
   apiSecret?: string;
   chain?: AevoChainType;
-  extraHeaders?: Record<string, string>;
   silent?: boolean;
 }
 
@@ -22,7 +22,7 @@ export class AevoClient {
   apiKey: string | undefined;
   apiSecret: string | undefined;
   chain: AevoChainType | undefined;
-  extraHeaders: Record<string, string> | undefined;
+  extraHeaders: Record<string, string | undefined> = {};
   wallet: Web3BaseWalletAccount | undefined;
   ws: WebSocket | undefined;
   config: AevoConfig = getAevoConfig();
@@ -34,7 +34,10 @@ export class AevoClient {
     this.apiKey = params?.apiKey;
     this.apiSecret = params?.apiSecret;
     this.chain = params?.chain;
-    this.extraHeaders = params?.extraHeaders;
+    this.extraHeaders = {
+      AEVO_KEY: params?.apiKey,
+      AEVO_SECRET: params?.apiSecret,
+    };
     this.silent = !!params?.silent;
 
     if (this.signingKey) {
@@ -42,6 +45,18 @@ export class AevoClient {
     }
     this.config = getAevoConfig(this.chain === AevoChainType.MAINNET);
   }
+
+  get signingDomain() {
+    return this.config.signing_domain;
+  }
+
+  getRestApiClient = () => {
+    return new AevoRestApi(this);
+  };
+
+  getOrdersClient = () => {
+    return new AevoOrderClient(this);
+  };
 
   openConnection = async (): Promise<void> => {
     if (!this.silent) {
@@ -118,9 +133,5 @@ export class AevoClient {
       console.log(`[Aevo-SDK]: WS subscribing to ticker ${asset}`);
     }
     await this.ws?.send(JSON.stringify({ op: "subscribe", data: [asset] }));
-  };
-
-  getRestApiClient = () => {
-    return new AevoRestApi(this);
   };
 }

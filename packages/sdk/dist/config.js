@@ -6,8 +6,8 @@ export var AevoChainType;
 export const TESTNET_CONFIG = {
     rest_url: "https://api-testnet.aevo.xyz",
     ws_url: "wss://ws-testnet.aevo.xyz",
-    chain: {
-        type: AevoChainType.TESTNET,
+    type: AevoChainType.TESTNET,
+    signing_domain: {
         name: "Aevo Testnet",
         version: "1",
         chainId: "11155111",
@@ -16,8 +16,8 @@ export const TESTNET_CONFIG = {
 export const MAINNET_CONFIG = {
     rest_url: "https://api.aevo.xyz",
     ws_url: "wss://ws.aevo.xyz",
-    chain: {
-        type: AevoChainType.MAINNET,
+    type: AevoChainType.MAINNET,
+    signing_domain: {
         name: "Aevo Mainnet",
         version: "1",
         chainId: "1",

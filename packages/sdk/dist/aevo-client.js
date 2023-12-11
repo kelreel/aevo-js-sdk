@@ -2,12 +2,20 @@ import { AevoChainType, getAevoConfig } from "./config";
 import { Web3 } from "web3";
 import WebSocket from "ws";
 import { sleep } from "./utils";
-import { AevoRestApi } from "./rest-api/rest-api";
+import { AevoRestApi } from "./rest-api";
+import { AevoOrderClient } from "./order";
 const web3 = new Web3("http://127.0.0.1:9999");
 export class AevoClient {
     constructor(params) {
+        this.extraHeaders = {};
         this.config = getAevoConfig();
         this.silent = false;
+        this.getRestApiClient = () => {
+            return new AevoRestApi(this);
+        };
+        this.getOrdersClient = () => {
+            return new AevoOrderClient(this);
+        };
         this.openConnection = async () => {
             if (!this.silent) {
                 console.log(`[Aevo-SDK]: Opening Aevo WS connection...`);
@@ -72,19 +80,22 @@ export class AevoClient {
             }
             await this.ws?.send(JSON.stringify({ op: "subscribe", data: [asset] }));
         };
-        this.getRestApiClient = () => {
-            return new AevoRestApi(this);
-        };
         this.signingKey = params?.signingKey;
         this.walletAddress = params?.walletAddress;
         this.apiKey = params?.apiKey;
         this.apiSecret = params?.apiSecret;
         this.chain = params?.chain;
-        this.extraHeaders = params?.extraHeaders;
+        this.extraHeaders = {
+            AEVO_KEY: params?.apiKey,
+            AEVO_SECRET: params?.apiSecret,
+        };
         this.silent = !!params?.silent;
         if (this.signingKey) {
             this.wallet = web3.eth.accounts.wallet.add(this.signingKey).get(0);
         }
         this.config = getAevoConfig(this.chain === AevoChainType.MAINNET);
+    }
+    get signingDomain() {
+        return this.config.signing_domain;
     }
 }

@@ -11,22 +11,22 @@ export declare class AevoRestApi {
     client: AevoClient;
     constructor(client: AevoClient);
     /**
-     * TODO desc
+     * Returns the list of active underlying assets.
      */
     getAssets: () => Promise<string[]>;
     /**
-     * TODO desc
+     * Returns the expiry timestamps of derivatives of the given asset.
      */
     getExpiries: (asset: string) => Promise<string[]>;
     /**
-     * TODO desc
+     * Returns the current index price of the given asset.
      */
     getIndex: (asset: string) => Promise<{
         timestamp: string;
         price: string;
     }>;
     /**
-     * TODO desc
+     * Returns the historical index price for a given asset.
      */
     getIndexHistory: (params: {
         asset: string;
@@ -34,13 +34,10 @@ export declare class AevoRestApi {
         start_time?: string;
         end_time?: string;
     }) => Promise<{
-        history: Array<[
-            string,
-            string
-        ]>;
+        history: Array<[string, string]>;
     }>;
     /**
-     * TODO desc
+     * Returns the historical mark prices for a given instrument.
      */
     getMarkHistory: (params: {
         instrument_name: string;
@@ -49,13 +46,10 @@ export declare class AevoRestApi {
         start_time?: string;
         end_time?: string;
     }) => Promise<{
-        history: Array<[
-            string,
-            string
-        ]>;
+        history: Array<[string, string]>;
     }>;
     /**
-     * TODO desc
+     * Returns the historical settlement prices for a given asset.
      */
     getSettlementHistory: (params: {
         asset: string;
@@ -69,7 +63,7 @@ export declare class AevoRestApi {
         settlement_timestamp: string;
     }[]>;
     /**
-     * TODO desc
+     * Returns a list of instruments. If asset is not specified, the response will include all listed instruments.
      */
     getMarkets: (params: {
         asset: string;
@@ -106,7 +100,7 @@ export declare class AevoRestApi {
         greeks: Greeks;
     } & Greeks))[]>;
     /**
-     * TODO desc
+     * Returns the market statistics for the given asset.
      */
     getStatistics: (params: {
         asset: string;
@@ -119,7 +113,7 @@ export declare class AevoRestApi {
         total_volume_premium: string;
     }>;
     /**
-     * TODO desc
+     * Returns the perpetual statistics of all assets specifically for https://www.coingecko.com/en/exchanges/aevo
      */
     getCoingeckoStatistics: () => Promise<{
         ticker_id: string;
@@ -136,13 +130,13 @@ export declare class AevoRestApi {
         contract_price_currency: string;
     }[]>;
     /**
-     * TODO desc
+     * Returns the orderbook for a given symbol.
      */
     getOrderbook: (params: {
         instrument_name: string;
     }) => Promise<any>;
     /**
-     * TODO desc
+     * Returns the current funding rate for the instrument.
      */
     getFunding: (params: {
         instrument_name: string;
@@ -151,7 +145,7 @@ export declare class AevoRestApi {
         funding_rate: string;
     }>;
     /**
-     * TODO desc
+     * Returns the funding rate history for the instrument.
      */
     getFundingHistory: (params: {
         instrument_name: string;
@@ -159,13 +153,10 @@ export declare class AevoRestApi {
         start_time?: string;
         end_time?: string;
     }) => Promise<{
-        funding_history: Array<[
-            string,
-            string
-        ]>;
+        funding_history: Array<[string, string]>;
     }>;
     /**
-     * TODO desc
+     * Returns the instrument information for the given instrument.
      */
     getInstrument: (params: {
         instrument_name: string;
@@ -194,7 +185,7 @@ export declare class AevoRestApi {
         funding_rate: string;
     }>;
     /**
-     * TODO desc
+     * Returns the trade history for the given instrument.
      */
     getInstrumentTradeHistory: (params: {
         instrument_name: string;

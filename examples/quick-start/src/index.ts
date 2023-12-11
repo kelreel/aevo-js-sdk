@@ -1,11 +1,7 @@
 import { AevoClient } from "aevo-js-sdk";
-// import {Web3} from 'web3';
 
-// const web3 = new Web3("http://127.0.0.1:9999");
-
-// const privateKeyString = '0x1f953dc9b6437fb94fcafa5dabe3faa0c34315b954dd66f41bf53273339c6d26'; // example
-// const account = web3.eth.accounts.wallet.add(privateKeyString).get(0)
-// console.log(account)
+const privateKeyString =
+  "0x1f953dc9b6437fb94fcafa5dabe3faa0c34315b954dd66f41bf53273339c6d26"; // example
 
 // Subscribe ETH ticker WS
 const wsData = async () => {
@@ -35,5 +31,24 @@ const getMarkets = async () => {
   console.log(data);
 };
 
-// wsData();
-// getMarkets();
+// Orders sign
+const orderTest = async () => {
+  const ordersClient = new AevoClient({
+    signingKey: privateKeyString,
+  }).getOrdersClient();
+
+  const order = ordersClient.constructOrder({
+    instrument: 1,
+    isBuy: true,
+    amount: "1000",
+    limitPrice: "10",
+  });
+
+  const signedOrder = await ordersClient.signOrder(order);
+
+  console.log(signedOrder);
+
+  // TODO: make order via REST/WS API
+};
+
+orderTest();

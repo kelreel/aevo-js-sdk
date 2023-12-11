@@ -1,6 +1,6 @@
 {
   "name": "aevo-js-sdk",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Aevo.xyz SDK",
   "type": "module",
   "main": "dist/index.js",
@@ -28,6 +28,8 @@
   "license": "MIT",
   "dependencies": {
     "web3": "^4.3.0",
+    "ethers": "6.9.0",
+    "eip-712": "^1.0.0",
     "ws": "^8.15.0",
     "ky": "^1.1.3"
   },
