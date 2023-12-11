@@ -6,6 +6,8 @@
 
 > [!WARNING]
 > The project is under active development and the API is unstable. The project is under active development and the API is unstable. It is recommended to run actions with orders only in the testnet.
+> Feel free to create issues and request features
+
 
 Unofficial JavaScript (TypeScript) Aevo SDK
 
@@ -27,16 +29,15 @@ API Keys: https://app.aevo.xyz/settings/api-keys or https://testnet.aevo.xyz/set
 - [x] Websocket public operations (Partially)
 - [x] REST public operations (Partially)
 - [ ] Trade operations (coming soon)
-- [ ] NPM package (coming soon)
 
 ---
 
-#### Quick dev start
+#### Quick start
 
-See examples
+See also /examples folder
 
 ```typescript
-import { AevoClient } from "aevo-js-sdk"; // not available in npm yet
+import { AevoClient } from "aevo-js-sdk";
 
 await client.openConnection();
 await client.subscribeTicker("ticker:ETH:PERPETUAL");
