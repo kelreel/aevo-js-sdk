@@ -1,6 +1,6 @@
 import { AevoChainType, AevoConfig } from "./config";
-import { Web3BaseWalletAccount } from 'web3';
-import WebSocket from 'ws';
+import { Web3BaseWalletAccount } from "web3";
+import WebSocket from "ws";
 interface Params {
     signingKey?: string;
     walletAddress?: string;
@@ -8,6 +8,7 @@ interface Params {
     apiSecret?: string;
     chain?: AevoChainType;
     extraHeaders?: Record<string, string>;
+    silent?: boolean;
 }
 export declare class AevoClient {
     signingKey: string | undefined;
@@ -19,7 +20,8 @@ export declare class AevoClient {
     wallet: Web3BaseWalletAccount | undefined;
     ws: WebSocket | undefined;
     config: AevoConfig;
-    constructor(params: Params);
+    silent: boolean;
+    constructor(params?: Params);
     openConnection: () => Promise<void>;
     closeConnection: () => Promise<void>;
     readMessages: (listener: (data: any) => void) => void;

@@ -1,4 +1,4 @@
-import {AevoClient} from 'aevo-js-sdk';
+import { AevoClient } from "aevo-js-sdk";
 // import {Web3} from 'web3';
 
 // const web3 = new Web3("http://127.0.0.1:9999");
@@ -8,19 +8,18 @@ import {AevoClient} from 'aevo-js-sdk';
 // console.log(account)
 
 const main = async () => {
-  const client = new AevoClient({})
+  const client = new AevoClient({});
   try {
     await client.openConnection();
-    client.readMessages((data) => console.log(data.data.tickers))
-    await client.subscribeTicker("ticker:ETH:PERPETUAL")
-
+    client.readMessages((data) => console.log(data.data.tickers));
+    await client.subscribeTicker("ticker:ETH:PERPETUAL");
 
     setTimeout(() => {
       client.closeConnection();
-    }, 4000)
+    }, 4000);
   } catch (error) {
     console.log(error);
   }
 };
 
-main()
+main();
