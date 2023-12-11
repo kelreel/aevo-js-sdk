@@ -25,10 +25,13 @@ API Keys: https://app.aevo.xyz/settings/api-keys or https://testnet.aevo.xyz/set
 
 #### Features and roadmap
 
-- [x] Aevo Client
+- [x] Aevo Client instance
+- [x] Well-typed REST responses 
 - [x] Websocket public operations (Partially)
-- [x] REST public operations (Partially)
+- [x] REST API operations (Partially)
+- [x] Private API (Partially)
 - [ ] Trade operations (coming soon)
+- [ ] Usage examples: trading bot (coming soon)
 
 ---
 
@@ -36,6 +39,23 @@ API Keys: https://app.aevo.xyz/settings/api-keys or https://testnet.aevo.xyz/set
 
 See also /examples folder
 
+
+```shell
+npm install aevo-js-sdk
+```
+
+##### Websocket ticket subscription
+
+
+```typescript
+import { AevoClient } from "aevo-js-sdk";
+
+await client.openConnection();
+await client.subscribeTicker("ticker:ETH:PERPETUAL");
+client.readMessages();
+```
+
+##### Websocket ticket subscription
 ```typescript
 import { AevoClient } from "aevo-js-sdk";
 

@@ -18,7 +18,7 @@ export class AevoRestApi {
   }
 
   /**
-   * TODO desc
+   * Returns the list of active underlying assets.
    */
   getAssets = async () => {
     const result = await ky
@@ -28,7 +28,7 @@ export class AevoRestApi {
   };
 
   /**
-   * TODO desc
+   * Returns the expiry timestamps of derivatives of the given asset.
    */
   getExpiries = async (asset: string) => {
     const result = await ky
@@ -38,7 +38,7 @@ export class AevoRestApi {
   };
 
   /**
-   * TODO desc
+   * Returns the current index price of the given asset.
    */
   getIndex = async (asset: string) => {
     const result = await ky
@@ -53,7 +53,7 @@ export class AevoRestApi {
   };
 
   /**
-   * TODO desc
+   * Returns the historical index price for a given asset.
    */
   getIndexHistory = async (params: {
     asset: string;
@@ -74,7 +74,7 @@ export class AevoRestApi {
   };
 
   /**
-   * TODO desc
+   * Returns the historical mark prices for a given instrument.
    */
   getMarkHistory = async (params: {
     instrument_name: string;
@@ -96,7 +96,7 @@ export class AevoRestApi {
   };
 
   /**
-   * TODO desc
+   * Returns the historical settlement prices for a given asset.
    */
   getSettlementHistory = async (params: {
     asset: string;
@@ -122,7 +122,7 @@ export class AevoRestApi {
   };
 
   /**
-   * TODO desc
+   * Returns a list of instruments. If asset is not specified, the response will include all listed instruments.
    */
   getMarkets = async (params: {
     asset: string;
@@ -178,7 +178,7 @@ export class AevoRestApi {
   };
 
   /**
-   * TODO desc
+   * Returns the market statistics for the given asset.
    */
   getStatistics = async (params: {
     asset: string;
@@ -201,7 +201,7 @@ export class AevoRestApi {
   };
 
   /**
-   * TODO desc
+   * Returns the perpetual statistics of all assets specifically for https://www.coingecko.com/en/exchanges/aevo
    */
   getCoingeckoStatistics = async () => {
     const result = await ky
@@ -228,7 +228,7 @@ export class AevoRestApi {
   };
 
   /**
-   * TODO desc
+   * Returns the orderbook for a given symbol.
    */
   getOrderbook = async (params: { instrument_name: string }) => {
     const result = await ky
@@ -238,7 +238,7 @@ export class AevoRestApi {
   };
 
   /**
-   * TODO desc
+   * Returns the current funding rate for the instrument.
    */
   getFunding = async (params: { instrument_name: string }) => {
     const result = await ky
@@ -253,7 +253,7 @@ export class AevoRestApi {
   };
 
   /**
-   * TODO desc
+   * Returns the funding rate history for the instrument.
    */
   getFundingHistory = async (params: {
     instrument_name: string;
@@ -274,7 +274,7 @@ export class AevoRestApi {
   };
 
   /**
-   * TODO desc
+   * Returns the instrument information for the given instrument.
    */
   getInstrument = async (params: { instrument_name: string }) => {
     const result = await ky
@@ -305,7 +305,7 @@ export class AevoRestApi {
   };
 
   /**
-   * TODO desc
+   * Returns the trade history for the given instrument.
    */
   getInstrumentTradeHistory = async (params: {
     instrument_name: string;
