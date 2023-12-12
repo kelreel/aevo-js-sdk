@@ -69,7 +69,9 @@ import { AevoClient } from "aevo-js-sdk";
 
 await client.openConnection();
 await client.subscribeTicker("ticker:ETH:PERPETUAL");
-client.readMessages();
+client.readMessages((data) => {
+  console.log(data.data.tickers)
+});
 ```
 
 ##### Get markets (REST API)
