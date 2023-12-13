@@ -1,8 +1,10 @@
 ## Aevo.xyz JS SDK ⚡
 
 <div align="center">
-  <img src="https://images.mirror-media.xyz/publication-images/nBg0BS_dWINeiuAf-asFL.jpeg?height=400&width=400" width="100" height="100">
+  <img src="./logo.png" width="120" height="120">
 </div>
+
+<br />
 
 > [!WARNING]
 > The project is under active development and the API is unstable. It is recommended to run actions with private API (e.g. orders creating) only in the testnet.
@@ -70,7 +72,7 @@ import { AevoClient } from "aevo-js-sdk";
 await client.openConnection();
 await client.subscribeTicker("ticker:ETH:PERPETUAL");
 client.readMessages((data) => {
-  console.log(data.data.tickers)
+  console.log(data.data.tickers);
 });
 ```
 

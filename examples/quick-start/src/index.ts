@@ -5,7 +5,7 @@ const privateKeyString =
 
 // Subscribe ETH ticker WS
 const wsData = async () => {
-  const client = new AevoClient({});
+  const client = new AevoClient().getWsApiClient();
   try {
     await client.openConnection();
     client.readMessages((data) => console.log(data.data.tickers));
@@ -13,7 +13,7 @@ const wsData = async () => {
 
     setTimeout(() => {
       client.closeConnection();
-    }, 4000);
+    }, 2000);
   } catch (error) {
     console.log(error);
   }
@@ -51,4 +51,4 @@ const orderTest = async () => {
   // TODO: make order via REST/WS API
 };
 
-orderTest();
+wsData();
