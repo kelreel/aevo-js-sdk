@@ -91,6 +91,8 @@ export class AevoWsApi {
     if (!this.silent) {
       console.log(`[Aevo-SDK]: WS subscribing to ticker ${asset}`);
     }
-    await this.ws?.send(JSON.stringify({ op: "subscribe", data: [asset] }));
+    await this.ws?.send(
+      JSON.stringify({ op: "subscribe", data: [`ticker:${asset}`] }),
+    );
   };
 }

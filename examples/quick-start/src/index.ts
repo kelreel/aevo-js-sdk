@@ -1,19 +1,23 @@
 import { AevoClient } from "aevo-js-sdk";
+import w3 from "web3";
 
-const privateKeyString =
-  "0x1f953dc9b6437fb94fcafa5dabe3faa0c34315b954dd66f41bf53273339c6d26"; // example
+const testWallet = new w3().eth.accounts.wallet.create(1)[0];
+const { address, privateKey } = testWallet;
+
+console.log({ address, privateKey });
 
 // Subscribe ETH ticker WS
 const wsData = async () => {
   const client = new AevoClient().getWsApiClient();
   try {
     await client.openConnection();
-    client.readMessages((data) => console.log(data.data.tickers));
-    await client.subscribeTicker("ticker:ETH:PERPETUAL");
+    client.readMessages((data) => console.log(data.data.tickers[0]));
+    // await client.subscribeTicker(`ETH:OPTION`);
+    await client.subscribeTicker(`ETH:PERPETUAL`);
 
     setTimeout(() => {
       client.closeConnection();
-    }, 2000);
+    }, 10000);
   } catch (error) {
     console.log(error);
   }
@@ -34,7 +38,7 @@ const getMarkets = async () => {
 // Orders sign
 const orderTest = async () => {
   const ordersClient = new AevoClient({
-    signingKey: privateKeyString,
+    signingKey: privateKey,
   }).getOrdersClient();
 
   const order = ordersClient.constructOrder({
