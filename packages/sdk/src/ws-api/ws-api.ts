@@ -95,4 +95,18 @@ export class AevoWsApi {
       JSON.stringify({ op: "subscribe", data: [`ticker:${asset}`] }),
     );
   };
+
+  /**
+   * Returns current orderbook, then pushes updates
+   */
+  subscribeOrderbook = async (asset: string): Promise<any> => {
+    if (!this.silent) {
+      console.log(`[Aevo-SDK]: WS subscribing to orderbook ${asset}`);
+    }
+    const result = await this.ws?.send(
+      JSON.stringify({ op: "subscribe", data: [`orderbook:${asset}`] }),
+    );
+
+    return result;
+  };
 }

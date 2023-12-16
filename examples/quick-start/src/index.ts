@@ -1,4 +1,4 @@
-import { AevoClient } from "aevo-js-sdk";
+import { AevoClient, isTickerUpdateResponse } from "aevo-js-sdk";
 import w3 from "web3";
 
 const testWallet = new w3().eth.accounts.wallet.create(1)[0];
@@ -11,9 +11,17 @@ const wsData = async () => {
   const client = new AevoClient().getWsApiClient();
   try {
     await client.openConnection();
-    client.readMessages((data) => console.log(data.data.tickers[0]));
-    // await client.subscribeTicker(`ETH:OPTION`);
+
+    client.readMessages((response) => {
+      const data = response.data;
+      if (isTickerUpdateResponse(data)) {
+        console.log(data.tickers);
+      }
+    });
+
     await client.subscribeTicker(`ETH:PERPETUAL`);
+    // await client.subscribeTicker(`ETH:OPTION`);
+    // await client.subscribeOrderbook("ETH:OPTION");
 
     setTimeout(() => {
       client.closeConnection();

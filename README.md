@@ -5,12 +5,20 @@
 </div>
 
 <br />
+<p align="center">
+  <a href="https://www.npmjs.com/package/aevo-js-sdk" target="_blank">
+    <img src="https://img.shields.io/npm/v/aevo-js-sdk">
+    <img src="https://img.shields.io/npm/dm/aevo-js-sdk">
+  </a>
+</p>
+
+<br />
 
 > [!WARNING]
 > The project is under active development and the API is unstable. It is recommended to run actions with private API (e.g. orders creating) only in the testnet.
 > Feel free to create issues and request features
 
-Unofficial JavaScript (TypeScript) Aevo SDK. Inspired by [Aevo SDK Python](https://github.com/aevoxyz/aevo-sdk).
+Unofficial NodeJS Aevo SDK. Inspired by [Aevo SDK Python](https://github.com/aevoxyz/aevo-sdk).
 
 <strong>Please see official the docs for more details:</strong>
 
