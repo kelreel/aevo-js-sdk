@@ -4,7 +4,7 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "start": "tsx watch src/index.ts",
+    "start": "npm run dev",
     "dev": "tsx watch src/index.ts"
   },
   "keywords": [],

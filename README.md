@@ -8,6 +8,8 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/aevo-js-sdk" target="_blank">
     <img src="https://img.shields.io/npm/v/aevo-js-sdk">
+  </a>
+  <a href="https://www.npmjs.com/package/aevo-js-sdk" target="_blank">
     <img src="https://img.shields.io/npm/dm/aevo-js-sdk">
   </a>
 </p>

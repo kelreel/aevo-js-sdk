@@ -1,6 +1,6 @@
 {
   "name": "aevo-js-sdk",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Aevo.xyz SDK",
   "type": "module",
   "main": "dist/index.js",
@@ -16,6 +16,7 @@
     "dist"
   ],
   "scripts": {
+    "start": "npm run dev",
     "dev": "tsc -w",
     "build": "tsc -b",
     "publint": "publint"
@@ -26,6 +27,11 @@
   ],
   "author": "kelreel",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kelreel/aevo-js-sdk"
+  },
+  "homepage": "https://github.com/kelreel/aevo-js-sdk",
   "dependencies": {
     "web3": "^4.3.0",
     "ethers": "6.9.0",

@@ -1,5 +1,6 @@
 import ky from "ky";
 import { AevoClient } from "../aevo-client";
+import { AevoInstrument, InstrumentType } from "../types";
 
 interface Greeks {
   delta: string;
@@ -128,7 +129,7 @@ export class AevoRestApi {
    */
   getMarkets = async (params: {
     asset: string;
-    instrument_type: "OPTION" | "PERPETUAL" | "SPOT";
+    instrument_type: InstrumentType;
   }) => {
     // TODO: result type
     const result = await ky
@@ -138,21 +139,7 @@ export class AevoRestApi {
       .json<
         Promise<
           Array<
-            | {
-                // PERPETUAL
-                instrument_id: string;
-                instrument_name: string;
-                instrument_type: string;
-                underlying_asset: string;
-                quote_asset: string;
-                price_step: string;
-                amount_step: string;
-                min_order_value: string;
-                mark_price: string;
-                index_price: string;
-                is_active: boolean;
-                max_leverage: string;
-              }
+            | AevoInstrument
             | ({
                 // OPTION
                 instrument_id: string;

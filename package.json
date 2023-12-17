@@ -3,7 +3,7 @@
   "private": true,
   "description": "Aevo.xyz Unofficial SDK",
   "workspaces": [
-    "packages/*",
+    "sdk",
     "examples/*"
   ],
   "scripts": {

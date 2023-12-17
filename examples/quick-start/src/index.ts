@@ -1,4 +1,8 @@
-import { AevoClient, isTickerUpdateResponse } from "aevo-js-sdk";
+import {
+  AevoClient,
+  getInstrumentByName,
+  isTickerUpdateResponse,
+} from "aevo-js-sdk";
 import w3 from "web3";
 
 const testWallet = new w3().eth.accounts.wallet.create(1)[0];
@@ -19,7 +23,10 @@ const wsData = async () => {
       }
     });
 
-    await client.subscribeTicker(`ETH:PERPETUAL`);
+    await client.subscribeTicker("ETH-PERP");
+
+    // or
+    //await client.subscribeTicker(getInstrumentByName("ETH")?.instrument_name!);
     // await client.subscribeTicker(`ETH:OPTION`);
     // await client.subscribeOrderbook("ETH:OPTION");
 
