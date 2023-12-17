@@ -79,8 +79,11 @@ import { AevoClient } from "aevo-js-sdk";
 
 await client.openConnection();
 await client.subscribeTicker("ticker:ETH:PERPETUAL");
-client.readMessages((data) => {
-  console.log(data.data.tickers);
+client.readMessages((response) => {
+  const data = response.data;
+  if (isTickerUpdateResponse(data)) {
+    console.log(data.tickers);
+  }
 });
 ```
 
